@@ -15,6 +15,7 @@ header {
 }
 
 .logo {
+  color: #f54b03;
   font-size: 24px;
   font-weight: bold;
   margin-right: 20px;
@@ -34,6 +35,25 @@ nav li {
 nav a {
   color: #fff;
   text-decoration: none;
+}
+
+nav li {
+  margin-right: 20px;
+  transition: background-color 0.3s; /* добавим переход для плавного изменения фона */
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #f54b03;
+}
+
+nav li.selected a {
+  color: #f54b03;
+  font-weight: bold; /* добавим жирный текст для визуального эффекта */
 }
 
 main {

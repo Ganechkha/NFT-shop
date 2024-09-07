@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80c334e3-5d43-4a1f-8ffa-8b65e8861884" name="Changes" comment="First commit: creating nft-shop django projects">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="80c334e3-5d43-4a1f-8ffa-8b65e8861884" name="Changes" comment="Creating the first page and connecting it to project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nft_shop/nft_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/nft_shop/nft_shop/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nft_shop/nft_shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/nft_shop/nft_shop/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nft_shop/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/nft_shop/account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nft_shop/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/nft_shop/static/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nft_shop/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/nft_shop/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +40,39 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/PythonProjects_d/NFT-shop/nft_shop/manage.py",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PythonProjects_d\NFT-shop\nft_shop\account\templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="NFTConfig" type="PythonConfigurationType" factoryName="Python">
+      <module name="NFT-shop" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\PythonProjects_d\NFT-shop\env\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.12 (NFT-shop)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nft_shop" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nft_shop/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -59,7 +89,35 @@
       <option name="project" value="LOCAL" />
       <updated>1725609817870</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add an account app adn starting works to authentification">
+      <created>1725611487161</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725611487161</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add an account app adn starting works to authentification">
+      <created>1725611585592</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1725611585592</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Creating a base.html and base.css files, adding path to static dir in settings.py">
+      <created>1725716053850</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725716053850</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Creating the first page and connecting it to project">
+      <created>1725727785323</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1725727785323</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -75,6 +133,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit: creating nft-shop django projects" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit: creating nft-shop django projects" />
+    <MESSAGE value="Add an account app adn starting works to authentification" />
+    <MESSAGE value="Creating a base.html and base.css files, adding path to static dir in settings.py" />
+    <MESSAGE value="Creating the first page and connecting it to project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating the first page and connecting it to project" />
   </component>
 </project>
