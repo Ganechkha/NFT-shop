@@ -10,13 +10,17 @@
   <body>
     <header>
       <div class="logo">Logo</div>
-      <nav>
-        <ul>
-          <li {% if section == 'dashboard' %}class="selected"{% endif %}><a href="#">Nav 1</a></li>
-          <li><a href="#">Nav 2</a></li>
-          <li><a href="#">Nav 3</a></li>
-        </ul>
-      </nav>
+      {% if request.user.is_authenticated %}
+        <nav>
+          <ul>
+            <li {% if section == 'dashboard' %}class="selected"{% endif %}><a href="#">Nav 1</a></li>
+            <li><a href="#">Nav 2</a></li>
+            <li><a href="#">Nav 3</a></li>
+          </ul>
+        </nav>
+      {% else %}
+        <button class="log-in-button"><a href="#">Log-in</a></button>
+      {% endif %}
     </header>
     <main>
       <div class="content">
@@ -25,12 +29,17 @@
       </div>
       <aside>
         <h2>Sidebar</h2>
+        <hr>
         <!-- Sidebar content goes here -->
         <ul>
           <li><a href="#">Link 1</a></li>
           <li><a href="#">Link 2</a></li>
           <li><a href="#">Link 3</a></li>
         </ul>
+        <br><br>
+        {% if request.user.is_authenticated %}
+          <button class="log-out-button"><a href="#">Log out</a></button>
+        {% endif %}
       </aside>
     </main>
   </body>

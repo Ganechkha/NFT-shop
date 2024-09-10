@@ -71,3 +71,46 @@ aside {
   padding: 2em;
   border-left: 2px solid #ddd;
 }
+
+.log-out-button {
+  width: 90%; /* Задает ширину кнопки, 90% от ширины родительского элемента */
+  margin: 0 auto; /* Центрирует кнопку по горизонтали */
+  padding: 10px 0; /* Добавляет отступ сверху и снизу для увеличения высоты кнопки */
+  text-align: center; /* Выравнивание текста кнопки по центру */
+  display: block; /* Задает кнопке блочный тип отображения */
+  border: none; /* Убирает рамку */
+  background-color: black; /* Цвет фона кнопки */
+  text-transform: uppercase; /* Делает текст кнопки заглавными буквами */
+  font-size: 1em; /* Задает размер шрифта кнопки */
+  cursor: pointer; /* Меняет курсор при наведении на кнопку */
+}
+
+.log-out-button a {
+  color: white;
+  text-decoration: none;
+}
+
+.log-out-button a:hover {
+  color: #f54b03;
+  text-decoration: none;
+}
+
+.log-in-button {
+  background-color: #f54b03;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.log-in-button a {
+  text-decoration: none;
+  color: white;
+}
+
+.log-in-button a:hover {
+  color: black;
+  text-decoration: none;
+}
