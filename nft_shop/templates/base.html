@@ -19,7 +19,7 @@
           </ul>
         </nav>
       {% else %}
-        <button class="log-in-button"><a href="#">Log-in</a></button>
+        <button class="log-in-button"><a href="{% url 'account:login' %}">Log-in</a></button>
       {% endif %}
     </header>
     <main>
@@ -27,20 +27,25 @@
         {% block content %}
         {% endblock %}
       </div>
-      <aside>
-        <h2>Sidebar</h2>
-        <hr>
-        <!-- Sidebar content goes here -->
-        <ul>
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
-          <li><a href="#">Link 3</a></li>
-        </ul>
-        <br><br>
-        {% if request.user.is_authenticated %}
-          <button class="log-out-button"><a href="#">Log out</a></button>
-        {% endif %}
-      </aside>
+      {% if request.user.is_authenticated %}
+        <aside>
+          <h2>Sidebar</h2>
+          <hr>
+          <!-- Sidebar content goes here -->
+          <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+          </ul>
+          <br><br>
+          <form action="{% url 'account:logout' %}" method="post">
+            {% csrf_token %}
+            <button class="log-out-button" type="submit">
+              <a href="#">Log out</a>
+            </button>
+          </form>
+        </aside>
+      {% endif %}
     </main>
   </body>
 </html>
