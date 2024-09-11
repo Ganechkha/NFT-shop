@@ -8,5 +8,7 @@ app_name = "account"
 
 urlpatterns = [
     path("", views.dashboard, name="dashboard"),
-    path("", include("django.contrib.auth.urls"))
+    path("", include("django.contrib.auth.urls")),
+    path("registration", views.registration,
+         name="registration"),
 ]

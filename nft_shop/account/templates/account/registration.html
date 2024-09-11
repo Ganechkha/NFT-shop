@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registration{% endblock %}
+
+{% block links %}
+  <link rel="stylesheet" href="{% static 'account/css/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1>Registration</h1><hr>
+  <p>Please use following form to register your account</p>
+  <form class="account-form" action="{% url 'account:registration' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create my account">
+  </form>
+{% endblock %}
