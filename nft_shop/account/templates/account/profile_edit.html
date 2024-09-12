@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block links %}
+  <link rel="stylesheet" href="{% static 'account/css/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1>Edit your profile</h1><hr>
+  <p>Use following form to edit profile</p>
+  <form action="{% url 'account:profile_edit' %}"
+        class="account-form" method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <input type="submit" value="Save changes">
+  </form>
+{% endblock %}

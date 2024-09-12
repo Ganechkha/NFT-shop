@@ -160,3 +160,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ["SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET"
 # email backend
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Media urls
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media/"

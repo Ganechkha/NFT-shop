@@ -11,4 +11,5 @@ urlpatterns = [
     path("", views.dashboard, name="dashboard"),
     path("registration/", views.registration,
          name="registration"),
+    path("edit/", views.profile_edit, name="profile_edit")
 ]
