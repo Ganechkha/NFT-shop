@@ -7,8 +7,8 @@ from . import views
 app_name = "account"
 
 urlpatterns = [
-    path("", views.dashboard, name="dashboard"),
     path("", include("django.contrib.auth.urls")),
-    path("registration", views.registration,
+    path("", views.dashboard, name="dashboard"),
+    path("registration/", views.registration,
          name="registration"),
 ]
