@@ -11,7 +11,7 @@
   <h1>Edit your profile</h1><hr>
   <p>Use following form to edit profile</p>
   <form action="{% url 'account:profile_edit' %}"
-        class="account-form" method="post">
+        class="account-form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ user_form.as_p }}
     {{ profile_form.as_p }}

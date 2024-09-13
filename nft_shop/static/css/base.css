@@ -71,6 +71,26 @@ aside {
   padding: 2em;
   border-left: 2px solid #ddd;
 }
+.avatar-container {
+  display: flex;
+  flex-direction: column; /*_MM.DataGridViewTextBoxColumn directions the avatar and username vertically */
+  align-items: center;
+  margin-bottom: 2em; /* Отступ снизу для разделения от основного контента */
+}
+
+.user-avatar {
+  width: 100px; /* Желаемый размер аватара */
+  height: 100px;
+  border-radius: 50%; /* Делаем изображение круглым */
+  object-fit: cover; /* Обрезаем изображение, чтобы оно поместилось */
+}
+
+.username {
+  font-size: 18px; /* Размер шрифта для ника */
+  font-weight: bold; /* Жирный шрифт для ника */
+  color: #333; /* Цвет ника */
+  margin-top: 10px; /* Отступ сверху для отделения от аватара */
+}
 
 .log-out-button {
   width: 90%; /* Задает ширину кнопки, 90% от ширины родительского элемента */

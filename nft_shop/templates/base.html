@@ -13,7 +13,7 @@
       {% if request.user.is_authenticated %}
         <nav>
           <ul>
-            <li {% if section == 'dashboard' %}class="selected"{% endif %}><a href="#">Nav 1</a></li>
+            <li {% if section == 'dashboard' %}class="selected"{% endif %}><a href="#">Dashboard</a></li>
             <li><a href="#">Nav 2</a></li>
             <li><a href="#">Nav 3</a></li>
           </ul>
@@ -29,8 +29,16 @@
       </div>
       {% if request.user.is_authenticated %}
         <aside>
-          <h2>Sidebar</h2>
-          <hr>
+          {% with profile=request.user.profile %}
+            <div class="avatar-container">
+              <a href="{% url 'account:profile_edit' %}">
+                <img src="{% if profile.image %}{{ profile.image.url }}
+                     {% else %}{% static 'img/no_image.jpg' %}{% endif %}"
+                     alt="User Avatar" class="user-avatar" />
+              </a>
+              <span class="username">{{ request.user.username }}</span>
+            </div>
+          {% endwith %}
           <!-- Sidebar content goes here -->
           <ul>
             <li><a href="#">Link 1</a></li>
