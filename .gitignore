@@ -163,6 +163,8 @@ cython_debug/
  passwords.py
 cert.crt
 cert.key
+workspace.xml
+
 
 
 
