@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ["nft-shop.com", "localhost", "127.0.0.1"]
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
+    'shop.apps.ShopConfig',
     'social_django',
     "django_extensions",
 
