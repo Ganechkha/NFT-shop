@@ -29,8 +29,8 @@ class NftProduct(models.Model):
     nft = models.ImageField(upload_to="shop/%Y/%m/%d")
     name = models.CharField(max_length=255)
     slug = models.SlugField()
-    category = models.ForeignKey(Category,
-                                 on_delete=models.SET_NULL)
+    categories = models.ForeignKey(Category,
+                                   on_delete=models.SET_NULL)
     owner = models.OneToOneField(User,
                                  on_delete=models.SET_NULL)
     created = models.DateTimeField(auto_now_add=True)
