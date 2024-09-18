@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}Catalog{% endblock %}
+
+{% block links %}
+  <link rel="stylesheet" href="{% static 'shop/css/catalog.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-2">
+      <div class="list-group">
+        <a href="#" class="list-group-item">Футболки</a>
+        <a href="#" class="list-group-item">Джинсы</a>
+        <a href="#" class="list-group-item">Брюки</a>
+        <a href="#" class="list-group-item">Платья</a>
+        <a href="#" class="list-group-item">Куртки</a>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        {% include 'shop/nft/list_part.html' with nfts=nfts %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block domready %}
+  var page = 1;
+  var emptyPage = false;
+  var blockRequest = false
+
+  document.addEventListener('scroll', function(e) {
+      var margin = document.body.clientHeight - window.innerHeight - 200;
+      if (window.pageYOffset > margin && !emptyPage && !blockRequest) {
+          blockRequest = true;
+          page += 1;
+
+          fetch('?ajax_nfts=1&page=' + page)
+          .then(response => response.text())
+          .then(html => {
+              if (html === '') {
+                  blockRequest = true;
+              }
+              else {
+                  var target = document.getElementsByClassName('row');
+                  target.insertAdjacentHTML('beforeEnd', html);
+                  blockRequest = false;
+              }
+          });
+      }
+  });
+
+  const scrollEvent = new Event('scroll');
+  window.dispatchEvent(scrollEvent);
+{% endblock %}

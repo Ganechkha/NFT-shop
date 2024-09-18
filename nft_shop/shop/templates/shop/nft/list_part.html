@@ -1,0 +1,21 @@
+{% load thumbnail %}
+
+{% for nft in nfts %}
+  <div class="col-sm-4">
+    <div class="product">
+      <div class="product-img">
+        {% thumbnail nft.nft 300x300 as im %}
+        <a href="{{ nft.get_absolute_url }}">
+          <img
+            src="{{ im.url }}"
+          />
+        </a>
+      </div>
+      <p class="product-title">
+        <a href="#">{{ nft.name }}</a>
+      </p>
+      <p class="product-desc">{{ nft.description|linebreaks }}</p>
+      <p class="product-price">Price: ${{ nft.price }}</p>
+    </div>
+  </div>
+{% endfor %}

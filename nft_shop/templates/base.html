@@ -4,7 +4,7 @@
   <head>
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    <link rel="stylesheet" href="{% static 'boostrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     {% block links %}
     {% endblock %}
   </head>
@@ -14,8 +14,12 @@
       {% if request.user.is_authenticated %}
         <nav>
           <ul>
-            <li {% if section == 'dashboard' %}class="selected"{% endif %}><a href="#">Dashboard</a></li>
-            <li><a href="#">Nav 2</a></li>
+            <li {% if section == 'dashboard' %}class="selected"{% endif %}>
+              <a href="{% url 'account:dashboard' %}">Dashboard</a>
+            </li>
+            <li {% if section == 'shop' %}class="selected"{% endif %}>
+              <a href="{% url 'shop:nft_list' %}">Shop</a>
+            </li>
             <li><a href="#">Nav 3</a></li>
           </ul>
         </nav>
@@ -24,7 +28,7 @@
       {% endif %}
     </header>
     <main>
-      <div class="content">
+      <div class="container content">
         {% block content %}
         {% endblock %}
       </div>
@@ -56,5 +60,14 @@
         </aside>
       {% endif %}
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js"></script>
+    <script>
+      const csrftoken = Cookies.get('csrftoken');
+
+      document.addEventLisner('DOMContentLoaded', (event) => {
+        {% block domready %}
+        {% endblock %}
+      });
+    </script>
   </body>
 </html>
