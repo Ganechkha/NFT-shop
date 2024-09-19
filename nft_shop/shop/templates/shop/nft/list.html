@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="col-md-10">
-      <div class="row">
+      <div class="row" id="ajax_target">
         {% include 'shop/nft/list_part.html' with nfts=nfts %}
       </div>
     </div>
@@ -45,7 +45,7 @@
                   blockRequest = true;
               }
               else {
-                  var target = document.getElementsByClassName('row');
+                  var target = document.getElementsById('ajax_target');
                   target.insertAdjacentHTML('beforeEnd', html);
                   blockRequest = false;
               }
