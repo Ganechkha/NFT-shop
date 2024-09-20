@@ -39,6 +39,7 @@ def nft_list(request: HttpRequest):
 @method_decorator(login_required, name="get")
 class NftDetail(DetailView):
     model = NftProduct
+    template_name = "shop/nft/detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
