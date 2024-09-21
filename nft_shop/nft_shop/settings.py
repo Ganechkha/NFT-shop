@@ -159,11 +159,21 @@ LOGOUT_URL = "account:logout"
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ["SOCIAL_AUTH_GOOGLE_OAUTH2_KEY"]
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ["SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET"]
 
-# email backend
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # Media urls
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media/"
+
+# SMTP Google
+
+EMAIL_HOST = "smtp.google.com"
+EMAIL_HOST_USER = "nft.team00@gmail.com"
+EMAIL_HOST_PASSWORD = os.environ["SMTP_EMAIL_PASSWORD"]
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# Redis
+
+REDIS_HOST = "localhost"
+REDIS_PORT = 6379
+REDIS_DB = 0
