@@ -1,5 +1,8 @@
 from django import forms
+from django.conf import settings
 from django.contrib.auth import get_user_model
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV2Checkbox
 
 from .models import Profile
 
@@ -12,6 +15,10 @@ class UserRegistrationForm(forms.ModelForm):
                                widget=forms.PasswordInput(attrs={'placeholder': 'password'}))
     password2 = forms.CharField(label="Repeat password",
                                 widget=forms.PasswordInput(attrs={'placeholder': 'repeat password'}))
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox,
+                             public_key=settings.RECAPTCHA_PUBLIC_KEY,
+                             private_key=settings.RECAPTCHA_PRIVATE_KEY,
+                             label="ReCAPTCHA")
 
     class Meta:
         model = User

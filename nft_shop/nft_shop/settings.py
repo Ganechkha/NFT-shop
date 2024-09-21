@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'social_django',
     'django_extensions',
     'easy_thumbnails',
+    'django_recaptcha',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -177,3 +178,8 @@ EMAIL_USE_TLS = True
 REDIS_HOST = "localhost"
 REDIS_PORT = 6379
 REDIS_DB = 0
+
+# reCAPTCHA
+
+RECAPTCHA_PUBLIC_KEY = os.environ["RECAPTCHA_PUBLIC_KEY"]
+RECAPTCHA_PRIVATE_KEY = os.environ["RECAPTCHA_PRIVATE_KEY"]
