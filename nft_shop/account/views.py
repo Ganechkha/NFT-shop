@@ -1,9 +1,17 @@
+from django.contrib.auth import get_user_model
 from django.http import HttpRequest, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_decode
 
 from .forms import UserRegistrationForm, UserEditForm, \
     ProfileEditForm
+from .tokens import account_activation_token
+from .tasks import send_activation_email
+
+
+User = get_user_model()
 
 
 @login_required
@@ -19,16 +27,34 @@ def registration(request: HttpRequest):
             cd = user_form.cleaned_data
 
             new_user = user_form.save(commit=False)
+            new_user.is_active = False
             new_user.set_password(cd["password"])
             new_user.save()
 
-            return render(request, "account/register_done.html",
-                          {"form": new_user})
+            send_activation_email.delay(new_user.id, new_user.email)
+
+            return render(request, "account/register_done.html")
     else:
         user_form = UserRegistrationForm()
 
     return render(request, "account/registration.html",
                   {"form": user_form})
+
+
+def activate(request: HttpRequest, uidb64, token) -> HttpResponse:
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(id=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+
+        return render(request, "registration/activation_done.html")
+    else:
+        return render(request, "registration/activation_error.html")
 
 
 @login_required

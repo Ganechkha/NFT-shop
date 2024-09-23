@@ -167,7 +167,7 @@ MEDIA_ROOT = BASE_DIR / "media/"
 
 # SMTP Google
 
-EMAIL_HOST = "smtp.google.com"
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "nft.team00@gmail.com"
 EMAIL_HOST_PASSWORD = os.environ["SMTP_EMAIL_PASSWORD"]
 EMAIL_PORT = 587

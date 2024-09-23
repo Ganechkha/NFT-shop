@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Activation{% endblock %}
+
+{% block content %}
+  <h1>Activation Error</h1>
+  <p>
+    You have got invalid link in email,
+    to activate your account you can <a href="{% url 'account:registration' %}">register</a> again.
+  </p>
+{% endblock %}
