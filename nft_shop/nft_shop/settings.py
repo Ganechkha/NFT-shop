@@ -37,19 +37,18 @@ ALLOWED_HOSTS = ["nft-shop.com", "localhost", "127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
-    'account.apps.AccountConfig',
-    'shop.apps.ShopConfig',
-    'social_django',
-    'django_extensions',
-    'easy_thumbnails',
-    'django_recaptcha',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account.apps.AccountConfig',
+    'shop.apps.ShopConfig',
+    'social_django',
+    'django_extensions',
+    'easy_thumbnails',
+    'django_recaptcha',
 ]
 
 MIDDLEWARE = [
