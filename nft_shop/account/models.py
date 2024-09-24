@@ -11,6 +11,7 @@ class Profile(models.Model):
     owner = models.OneToOneField(User,
                                  blank=True,
                                  null=True,
+                                 related_name="profile",
                                  on_delete=models.CASCADE)
     image = models.ImageField(upload_to="account/%Y/%m/%d",
                               blank=True)

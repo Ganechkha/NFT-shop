@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
     'shop.apps.ShopConfig',
+    'users.apps.UsersConfig',
     'social_django',
     'django_extensions',
     'easy_thumbnails',
