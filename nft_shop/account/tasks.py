@@ -9,11 +9,12 @@ from .tokens import account_activation_token
 
 
 @shared_task
-def send_activation_email(user_id: int, to_email: str) -> None:
+def send_activation_email(user_id: int, to_email: str, current_domain: str) -> None:
     user = User.objects.get(id=user_id)
     subject = "Activate your account"
     message = render_to_string("registration/activation_email.html", {
         "username": user.username,
+        "current_domain": current_domain,
         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
         "token": account_activation_token.make_token(user),
     })

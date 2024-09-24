@@ -6,6 +6,8 @@ User = get_user_model()
 
 
 class Profile(models.Model):
+    objects = models.Manager()
+
     owner = models.OneToOneField(User,
                                  blank=True,
                                  null=True,

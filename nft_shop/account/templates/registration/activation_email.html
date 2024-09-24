@@ -2,7 +2,7 @@
 Hi {{ username }},
 Please click on the link to confirm your registration,
 
-http://127.0.0.1:8000{% url 'account:activate' uidb64=uid token=token %}
+http://{{ current_domain }}{% url 'account:activate' uidb64=uid token=token %}
 
 If you think, it's not you, then just ignore this email.
 {% endautoescape %}

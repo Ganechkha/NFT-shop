@@ -9,6 +9,7 @@ from .forms import UserRegistrationForm, UserEditForm, \
     ProfileEditForm
 from .tokens import account_activation_token
 from .tasks import send_activation_email
+from .models import Profile
 
 
 User = get_user_model()
@@ -31,7 +32,7 @@ def registration(request: HttpRequest):
             new_user.set_password(cd["password"])
             new_user.save()
 
-            send_activation_email.delay(new_user.id, new_user.email)
+            send_activation_email.delay(new_user.id, new_user.email, request.get_host())
 
             return render(request, "account/register_done.html")
     else:
@@ -51,6 +52,9 @@ def activate(request: HttpRequest, uidb64, token) -> HttpResponse:
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
+
+        # Creating profile for active user
+        Profile.objects.create(owner=user)
 
         return render(request, "registration/activation_done.html")
     else:
