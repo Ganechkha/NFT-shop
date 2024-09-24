@@ -12,11 +12,20 @@
   <div class="row">
     <div class="col-md-2">
       <div class="list-group">
-        <a href="#" class="list-group-item">Футболки</a>
-        <a href="#" class="list-group-item">Джинсы</a>
-        <a href="#" class="list-group-item">Брюки</a>
-        <a href="#" class="list-group-item">Платья</a>
-        <a href="#" class="list-group-item">Куртки</a>
+        <a href="{% url 'shop:nft_list' %}"
+           class="list-group-item {% if not category %}
+                                  list-group-item-secondary
+                                  {% endif %}">
+          All
+        </a>
+        {% for c in categories %}
+          <a href="{% url 'shop:nft_list_by_category' category_slug=c.slug %}"
+             class="list-group-item {% if c == category %}
+                                    list-group-item-secondary
+                                    {% endif %}">
+            {{ c.name }}
+          </a>
+        {% endfor %}
       </div>
     </div>
     <div class="col-md-10">

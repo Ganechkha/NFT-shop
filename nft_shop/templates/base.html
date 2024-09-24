@@ -23,6 +23,12 @@
             <li><a href="#">Nav 3</a></li>
           </ul>
         </nav>
+        <form action="{% url 'account:logout' %}" method="post">
+          {% csrf_token %}
+          <button class="log-in-button" type="submit">
+            <a href="#">Log out</a>
+          </button>
+        </form>
       {% else %}
         <button class="log-in-button"><a href="{% url 'account:login' %}">Log-in</a></button>
       {% endif %}
@@ -50,13 +56,6 @@
             <li><a href="#">Link 2</a></li>
             <li><a href="#">Link 3</a></li>
           </ul>
-          <br><br>
-          <form action="{% url 'account:logout' %}" method="post">
-            {% csrf_token %}
-            <button class="log-out-button" type="submit">
-              <a href="#">Log out</a>
-            </button>
-          </form>
         </aside>
       {% endif %}
     </main>

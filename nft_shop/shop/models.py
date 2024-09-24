@@ -7,6 +7,8 @@ User = get_user_model()
 
 
 class Category(models.Model):
+    objects = models.Manager()
+
     name = models.CharField(max_length=255)
     slug = models.SlugField()
 
@@ -31,7 +33,7 @@ class NftProduct(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField()
     description = models.TextField(blank=True)
-    categories = models.ForeignKey(Category,
+    category = models.ForeignKey(Category,
                                    null=True,
                                    on_delete=models.SET_NULL)
     owner = models.ForeignKey(User,

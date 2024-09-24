@@ -6,11 +6,18 @@ from django.http import HttpRequest, HttpResponse
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
-from .models import NftProduct
+from .models import NftProduct, Category
 
 
-def nft_list(request: HttpRequest):
-    nfts = NftProduct.sold_objects.all()
+def nft_list(request: HttpRequest, category_slug: str = None):
+    if category_slug:
+        category = Category.objects.get(slug=category_slug)
+        nfts = NftProduct.sold_objects.filter(category=category)
+    else:
+        category = None
+        nfts = NftProduct.sold_objects.all()
+
+    categories = Category.objects.all()
     paginator = Paginator(nfts, 12)
     page = request.GET.get("page")
     ajax_nfts = request.GET.get("ajax_nfts")
@@ -25,14 +32,12 @@ def nft_list(request: HttpRequest):
 
         nfts = paginator.page(paginator.num_pages)
 
-    if ajax_nfts:
-        return render(request,
-                      "shop/nft/list_part.html",
-                      {"section": "shop",
-                       "nfts": nfts})
+    template_name = "shop/nft/list_part.html" if ajax_nfts else "shop/nft/list.html"
     return render(request,
-                  "shop/nft/list.html",
+                  template_name,
                   {"section": "shop",
+                   "categories": categories,
+                   "category": category,
                    "nfts": nfts})
 
 
