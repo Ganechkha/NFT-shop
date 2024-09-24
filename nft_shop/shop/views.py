@@ -1,3 +1,5 @@
+import redis
+from django.conf import settings
 from django.shortcuts import render
 from django.views.generic import DetailView
 from django.core.paginator import Paginator, \
@@ -7,6 +9,11 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
 from .models import NftProduct, Category
+
+
+r = redis.Redis(host=settings.REDIS_HOST,
+                port=settings.REDIS_PORT,
+                db=settings.REDIS_DB)
 
 
 def nft_list(request: HttpRequest, category_slug: str = None):
@@ -48,5 +55,7 @@ class NftDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        total_views = r.incr(f"nft:{self.object.id}:views")
+        context["views"] = total_views
         context["section"] = "shop"
         return context
