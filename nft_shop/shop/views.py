@@ -1,5 +1,7 @@
 import redis
+from django.db.models import F, Value
 from django.conf import settings
+from django.db.models.functions import Coalesce
 from django.shortcuts import render
 from django.views.generic import DetailView
 from django.core.paginator import Paginator, \
@@ -9,6 +11,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
 from .models import NftProduct, Category
+from . utils import set_views_for_products
 
 
 r = redis.Redis(host=settings.REDIS_HOST,
@@ -20,9 +23,11 @@ def nft_list(request: HttpRequest, category_slug: str = None):
     if category_slug:
         category = Category.objects.get(slug=category_slug)
         nfts = NftProduct.sold_objects.filter(category=category)
+        nfts = set_views_for_products(nfts)
     else:
         category = None
         nfts = NftProduct.sold_objects.all()
+        nfts = set_views_for_products(nfts)
 
     categories = Category.objects.all()
     paginator = Paginator(nfts, 12)
