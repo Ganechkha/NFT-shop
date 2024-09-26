@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load thumbnail %}
 
 {% block title %}Users{% endblock %}
 
@@ -10,16 +11,17 @@
 {% block content %}
   <h1>Another users</h1>
   <div id="users-list">
+    {% include 'users/includes/pagination.html' %}
     {% for user in users %}
       <div class="user">
         {% with profile=user.profile %}
           <a href="#">
-            <img src="{% if profile.image %}{{ profile.image.url }}
+            <img src="{% if profile.image %}{% thumbnail user.profile.image 180x180 %}
                  {% else %}{% static 'img/no_image.jpg' %}{% endif %}"
                  alt="User avatar">
           </a>
           <div class="info">
-            <a href="#">{% user.username %}</a>
+            <a href="#">{{ user.username }}</a>
           </div>
         {% endwith %}
       </div>

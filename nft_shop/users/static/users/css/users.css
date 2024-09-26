@@ -5,9 +5,9 @@
   margin-bottom: 20px;
 }
 #users-list .user {
-  width: 180px;
+  width: 190px;
   float: left;
-  overflow: auto;
+  overflow: hidden;
   padding: 10px;
 }
 #users-list .info {

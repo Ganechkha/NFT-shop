@@ -20,7 +20,9 @@
             <li {% if section == 'shop' %}class="selected"{% endif %}>
               <a href="{% url 'shop:nft_list' %}">Shop</a>
             </li>
-            <li><a href="#">Nav 3</a></li>
+            <li {% if section == 'users' %}class="selected"{% endif %}>
+              <a href="{% url 'users:users_list' %}">Users</a>
+            </li>
           </ul>
         </nav>
         <form action="{% url 'account:logout' %}" method="post">
