@@ -34,9 +34,10 @@ class NftProduct(models.Model):
     slug = models.SlugField()
     description = models.TextField(blank=True)
     category = models.ForeignKey(Category,
-                                   null=True,
-                                   on_delete=models.SET_NULL)
+                                 null=True,
+                                 on_delete=models.SET_NULL)
     owner = models.ForeignKey(User,
+                              related_name="nfts",
                               null=True,
                               on_delete=models.SET_NULL)
     price = models.DecimalField(max_digits=20,

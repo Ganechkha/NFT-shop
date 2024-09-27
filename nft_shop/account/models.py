@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-
+from django.urls import reverse
 
 User = get_user_model()
 
@@ -22,3 +22,8 @@ class Profile(models.Model):
 
     def __str__(self) -> str:
         return f"Profile for {self.owner.username}"
+
+    def get_absolute_url(self) -> str:
+        return reverse("users:user_detail",
+                       args=[self.owner.id,
+                             self.owner.username])

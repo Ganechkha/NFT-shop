@@ -25,7 +25,8 @@ class UserListView(ListView):
 
 @method_decorator(login_required, name="dispatch")
 class UserProfileDetail(DetailView):
-    context_object_name = "user"
+    model = Profile
+    context_object_name = "profile"
     template_name = "users/detail.html"
 
     def get_context_data(self, **kwargs):

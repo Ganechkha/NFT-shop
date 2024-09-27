@@ -27,6 +27,47 @@ img.user-detail {
   overflow: auto;
   margin-right: 20px;
 }
-.image-container {
-  margin-top: 40px;
+
+.user-avatar-detail {
+  max-width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
+
+.user-nft-detail {
+  max-height: 100%
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.product {
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid #c0c0c0;
+  height: 200px;
+  overflow: hidden;
+  padding: 25px 15px;
+  position: relative;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  margin-bottom: 20px;
+}
+.product:hover {
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+.sell-button {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+  display: block;
+  border: none;
+  background-color: black;
+  text-transform: uppercase;
+  font-size: 1em;
+  cursor: pointer;
+  bottom: 15px;
+  left: 0;
+  position: absolute;
+}
+

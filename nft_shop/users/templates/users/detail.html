@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block links %}
+  <link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-4">
+      <img
+        class="user-avatar-detail"
+        src="{% if profile.image %}{{ profile.image.url }}
+        {% else %}{% static 'img/no_image.jpg' %}{% endif %}"
+        alt="User avatar"
+      />
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-7">
+      {% with user=profile.owner %}
+        <h1 class="text-center">{{ user.username }}</h1>
+        <h3 class="text-start">{{ user.username }} nfts</h3>
+        <div class="row">
+          {% for nft in user.nfts.all %}
+            <div class="col-3">
+              <div class="product">
+                <img
+                        class="user-nft-detail"
+                        src="{% thumbnail nft.nft 100x100 %}"
+                        alt="User nft"
+                /><br><br>
+                <form action="#" method="post">
+                  <button type="submit" class="log-out-button">
+                    <a href="#">Sell it!</a>
+                  </button>
+                </form>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endwith %}
+    </div>
+  </div>
+{% endblock %}

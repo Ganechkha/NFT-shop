@@ -54,7 +54,7 @@ def activate(request: HttpRequest, uidb64, token) -> HttpResponse:
         user.save()
 
         # Creating profile for active user
-        Profile.objects.create(owner=user)
+        Profile.objects.get_or_create(owner=user)
 
         return render(request, "registration/activation_done.html")
     else:
