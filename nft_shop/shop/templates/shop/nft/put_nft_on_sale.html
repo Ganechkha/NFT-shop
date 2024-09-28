@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Put your NFT on sale{% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'shop/css/catalog.css' %}">
+<link rel="stylesheet" href="{% static 'shop/css/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-6">
+    <div class="product-img">
+      <img src="{{ nft.nft.url }}"
+           alt="Nft">
+    </div>
+  </div>
+  <div class="col-6">
+    <h1 class="text-center">Put your nft on sale</h1>
+    <form class="sell-nft-form" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Put on">
+    </form>
+    <h3 class="text-center">You can also update your price with percents</h3>
+    <form class="sell-nft-form"
+          action="{% url 'shop:update_price' nft_id=nft.id %}"
+          method="post">
+      {% csrf_token %}
+      {{ percent_form.as_p }}
+      <input type="submit" value="Update with percents">
+    </form>
+  </div>
+</div>
+{% endblock %}

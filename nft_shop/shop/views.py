@@ -1,17 +1,19 @@
 import redis
-from django.db.models import F, Value
+from decimal import Decimal
 from django.conf import settings
-from django.db.models.functions import Coalesce
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import DetailView
 from django.core.paginator import Paginator, \
     PageNotAnInteger, EmptyPage
 from django.http import HttpRequest, HttpResponse
 from django.utils.decorators import method_decorator
+from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 
 from .models import NftProduct, Category
-from . utils import set_views_for_products
+from .utils import set_views_for_products
+from .forms import NftProductSellForm, \
+    UpdatePriceWithPercentsForm
 
 
 r = redis.Redis(host=settings.REDIS_HOST,
@@ -64,3 +66,37 @@ class NftDetail(DetailView):
         context["views"] = total_views
         context["section"] = "shop"
         return context
+
+
+def put_nft_on_sale(request: HttpRequest, nft_id: int) -> HttpResponse:
+    nft = NftProduct.objects.get(id=nft_id)
+    if request.method == "POST":
+        form = NftProductSellForm(data=request.POST)
+        nft_on_sale = form.save(commit=False)
+        nft_on_sale.is_sale = True
+        nft_on_sale.save()
+
+        return redirect("shop:nft_list")
+    else:
+        form = NftProductSellForm(instance=nft)
+        percent_form = UpdatePriceWithPercentsForm()
+
+    return render(request, "shop/nft/put_nft_on_sale.html",
+                  context={"section": "shop",
+                           "form": form,
+                           "percent_form": percent_form,
+                           "nft": nft})
+
+
+@require_POST
+def nft_price_update(request, nft_id: int) -> HttpResponse:
+    nft = NftProduct.objects.get(id=nft_id)
+    percent_form = UpdatePriceWithPercentsForm(data=request.POST)
+
+    if percent_form.is_valid():
+        nft.price += (nft.price
+                      * Decimal(percent_form.cleaned_data["price_increase"])
+                      / Decimal(100))
+        nft.save()
+
+    return redirect("shop:put_nft_on_sale", nft_id=nft_id)
