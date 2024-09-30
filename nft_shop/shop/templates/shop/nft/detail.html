@@ -59,9 +59,23 @@
         <div class="col-12"></div>
         <div class="row">
           <h3 class="text-start">Similar nfts</h3>
-          <div class="col-4">
-            <p>Nothing</p>
-          </div>
+          {% for nft in similar_nfts %}
+            <div class="col-lg-4">
+              <a href="{{ nft.get_absolute_url }}">
+                <div class="similar-product">
+                  <img
+                    class="similar-nft"
+                    src="{% thumbnail nft.nft 100x100 %}"
+                    alt="User nft"
+                  />
+                </div>
+              </a>
+            </div>
+          {% empty %}
+            <div class="col-4">
+              <p>Nothing</p>
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>

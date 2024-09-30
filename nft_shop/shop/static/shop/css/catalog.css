@@ -44,3 +44,25 @@ img {
 	font-size: 18px;
 	font-weight: 500;
 }
+
+.similar-product {
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid #c0c0c0;
+  height: 150px;
+  overflow: hidden;
+  padding: 25px 15px;
+  position: relative;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  margin-bottom: 20px;
+}
+
+.similar-product:hover {
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+.similar-nft {
+  max-height: 100%
+  max-width: 100%;
+  object-fit: cover;
+}

@@ -60,5 +60,5 @@ class NftProduct(models.Model):
 
     def get_absolute_url(self) -> str:
         return reverse("shop:nft_detail",
-                       args=[self.slug,
-                             self.id])
+                       args=[self.id,
+                             self.slug])

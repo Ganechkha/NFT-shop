@@ -8,6 +8,7 @@ class NftProductSellForm(forms.ModelForm):
         model = NftProduct
         fields = ["description", "price"]
 
+
 class UpdatePriceWithPercentsForm(forms.Form):
     PERCENT_CHOICES = [
         (0, "0%"),
