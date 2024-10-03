@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'shop.apps.ShopConfig',
     'users.apps.UsersConfig',
+    'payment.apps.PaymentConfig',
     'social_django',
     'django_extensions',
     'easy_thumbnails',
@@ -183,3 +184,8 @@ REDIS_DB = 0
 
 RECAPTCHA_PUBLIC_KEY = os.environ["RECAPTCHA_PUBLIC_KEY"]
 RECAPTCHA_PRIVATE_KEY = os.environ["RECAPTCHA_PRIVATE_KEY"]
+
+# yookassa
+
+YOOKASSA_SHOP_ID = os.environ["YOOKASSA_SHOP_ID"]
+YOOKASSA_SECRET_KEY = os.environ["YOOKASSA_SECRET_KEY"]

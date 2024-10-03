@@ -54,7 +54,9 @@
         </div>
         <div class="col-6"><h4>${{ object.price }}</h4></div>
         <div class="col-6">
-          <button class="log-in-button"><a href="#">Buy</a></button>
+          <button class="log-in-button">
+            <a href="{% url 'payment:process' nft_id=object.id %}">Buy</a>
+          </button>
         </div>
         <div class="col-12"></div>
         <div class="row">
