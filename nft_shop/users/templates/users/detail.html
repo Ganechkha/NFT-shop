@@ -31,10 +31,7 @@
                         class="user-nft-detail"
                         src="{% thumbnail nft.nft 100x100 %}"
                         alt="User nft"
-                /><br><br>
-                  <button type="submit" class="log-out-button">
-                    <a href="{% url 'shop:put_nft_on_sale' nft_id=nft.id %}">Sell it!</a>
-                  </button>
+                />
               </div>
             </div>
           {% endfor %}
