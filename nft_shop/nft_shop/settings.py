@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 import dotenv
+import uuid
 from pathlib import Path
 
 
@@ -189,3 +190,7 @@ RECAPTCHA_PRIVATE_KEY = os.environ["RECAPTCHA_PRIVATE_KEY"]
 
 YOOKASSA_SHOP_ID = os.environ["YOOKASSA_SHOP_ID"]
 YOOKASSA_SECRET_KEY = os.environ["YOOKASSA_SECRET_KEY"]
+
+# Favorites
+
+FAVORITES_SESSION_ID = uuid.uuid4()
