@@ -1,10 +1,38 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
 
 {% block title %}Dashboard{% endblock %}
 
+{% block links %}
+  <link rel="stylesheet" href="{% static 'account/css/account.css' %}">
+{% endblock %}
+
 {% block content %}
-  <h1>Wellcome to your dashboard</h1>
-  <div class="container">
-    hello
+  <h1>Wellcome to your dashboard</h1><hr>
+  <h3 class="text-center">Here you can see your nfts (sold or not)</h3><br>
+  <div class="row">
+    {% for nft in user_nfts %} 
+      <div class="col-2">
+        <div class="{% if nft.is_sale %}sold-product
+                    {% else %}product{% endif %}">
+          <img src="{% thumbnail nft.nft 200x200 %}"
+               alt="User`s nft" class="product-img">
+          {% if nft.is_sale %}
+            <br><br>
+            <p class="text-center">
+              Being sold
+            </p>
+          {% else %}
+            <br><br>
+            <button class="sell-button">
+              <a href="{% url 'shop:put_nft_on_sale' nft_id=nft.id %}">
+                Sell it
+              </a>
+            </button>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
   </div>
 {% endblock %}

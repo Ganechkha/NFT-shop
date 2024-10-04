@@ -10,6 +10,7 @@ from .forms import UserRegistrationForm, UserEditForm, \
 from .tokens import account_activation_token
 from .tasks import send_activation_email
 from .models import Profile
+from shop.models import NftProduct
 
 
 User = get_user_model()
@@ -17,8 +18,10 @@ User = get_user_model()
 
 @login_required
 def dashboard(request: HttpRequest) -> HttpResponse:
+    user_nfts = NftProduct.objects.filter(owner=request.user)
     return render(request, "account/dashboard.html",
-                  {"section": "dashboard"})
+                  {"section": "dashboard",
+                   "user_nfts": user_nfts})
 
 
 def registration(request: HttpRequest):
