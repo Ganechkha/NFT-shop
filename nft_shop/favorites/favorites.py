@@ -1,8 +1,10 @@
-from debug_toolbar.panels.sql.utils import ElideSelectListsFilter
+from typing import Generator
+
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.http import HttpRequest
 
+from nft_shop.shop.models import NftProduct
 
 User = get_user_model()
 
@@ -30,3 +32,15 @@ class Favorite:
         if nft := str(nft_id) in self.favorites:
             self.favorites[nft] = nft_id
 
+    def favorites_clear(self):
+        self.favorites.clear()
+
+    def __iter__(self) -> Generator[NftProduct]:
+        """
+        For each key in self.favorites extracts
+        NftProduct object yields it
+        """
+        for value in self.favorites.values():
+            nft = NftProduct.objects.get(id=value)
+
+            yield nft
