@@ -68,11 +68,12 @@ class NftDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         total_views = r.incr(f"nft:{self.object.id}:views")
+        context["views"] = total_views
+
         context["similar_nfts"] = NftProduct.sold_objects \
                                        .filter(Q(owner=self.object.owner)
                                                | Q(category=self.object.category)) \
                                        .exclude(id=self.object.id)[:6]
-        context["views"] = total_views
         context["section"] = "shop"
         return context
 

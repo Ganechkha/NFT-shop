@@ -65,10 +65,10 @@
     <script>
       const csrftoken = Cookies.get('csrftoken');
 
-      document.addEventLisner('DOMContentLoaded', (event) => {
+      document.addEventListener('DOMContentLoaded', (event) => {
         {% block domready %}
         {% endblock %}
-      });
+      })
     </script>
   </body>
 </html>
