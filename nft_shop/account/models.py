@@ -7,15 +7,6 @@ from shop.models import NftProduct
 User = get_user_model()
 
 
-class Favorite(models.Model):
-    profile = models.ForeignKey(to="Profile",
-                                related_name="profile_favorites",
-                                on_delete=models.CASCADE)
-    nft = models.ForeignKey(to=NftProduct,
-                            on_delete=models.CASCADE)
-    added_at = models.DateTimeField(auto_now_add=True)
-
-
 class Profile(models.Model):
     objects = models.Manager()
 
@@ -25,7 +16,7 @@ class Profile(models.Model):
                                  related_name="profile",
                                  on_delete=models.CASCADE)
     favorites = models.ManyToManyField(to=NftProduct,
-                                       through="Favorite",
+                                       through="favorites.Favorite",
                                        related_name="users_added")
 
     image = models.ImageField(upload_to="account/%Y/%m/%d",

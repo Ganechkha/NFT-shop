@@ -34,5 +34,19 @@
         </div>
       </div>
     {% endfor %}
+  </div><br><hr>
+  <h3 class="text-center">
+    Here we can see your favorite nfts. Don`t forget - if you wait too long, someone will bye your favorite nft.....
+  </h3><br>
+  <div class="row">
+    {% for nft in favorites %}
+      <div class="col-2">
+        <div class="sold-product">
+          <img src="{% thumbnail nft.nft 200x200 %}"
+               alt="User`s favorite nft" class="product-img"><br><br>
+          <p>Users added: {{ nft.users_added.count }}</p>
+        </div>
+      </div>
+    {% endfor %}
   </div>
 {% endblock %}

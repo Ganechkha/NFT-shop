@@ -16,6 +16,7 @@ from .models import NftProduct, Category
 from .utils import set_views_for_products
 from .forms import NftProductSellForm, \
     UpdatePriceWithPercentsForm
+from account.models import Profile
 
 
 r = redis.Redis(host=settings.REDIS_HOST,
@@ -74,6 +75,10 @@ class NftDetail(DetailView):
                                        .filter(Q(owner=self.object.owner)
                                                | Q(category=self.object.category)) \
                                        .exclude(id=self.object.id)[:6]
+
+        profile_id = self.request.user.profile.id
+        profile = Profile.objects.get(id=profile_id)
+        context["favorites"] = profile.favorites.all()
         context["section"] = "shop"
         return context
 
