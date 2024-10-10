@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <div class="logo">Logo</div>
+      <div class="logo">NFT-shop</div>
       {% if request.user.is_authenticated %}
         <nav>
           <ul>
@@ -65,10 +65,10 @@
     <script>
       const csrftoken = Cookies.get('csrftoken');
 
-      document.addEventLisner('DOMContentLoaded', (event) => {
+      document.addEventListener('DOMContentLoaded', (event) => {
         {% block domready %}
         {% endblock %}
-      });
+      })
     </script>
   </body>
 </html>

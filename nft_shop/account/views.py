@@ -19,9 +19,15 @@ User = get_user_model()
 @login_required
 def dashboard(request: HttpRequest) -> HttpResponse:
     user_nfts = NftProduct.objects.filter(owner=request.user)
+
+    profile_id = request.user.profile.id
+    profile = Profile.objects.get(id=profile_id)
+    user_favorites = profile.favorites.all()
+
     return render(request, "account/dashboard.html",
                   {"section": "dashboard",
-                   "user_nfts": user_nfts})
+                   "user_nfts": user_nfts,
+                   "favorites": user_favorites})
 
 
 def registration(request: HttpRequest):
