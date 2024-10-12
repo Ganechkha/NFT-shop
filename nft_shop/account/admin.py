@@ -5,6 +5,6 @@ from .models import Profile
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ["owner", "date_of_birth", "created", "updated"]
+    list_display = ["id", "owner", "date_of_birth", "created", "updated"]
     raw_id_fields = ["owner"]
     ordering = ["-created"]

@@ -84,7 +84,8 @@ def profile_edit(request: HttpRequest) -> HttpResponse:
 
             return render(request, "account/profile_edit.html",
                           {"user_form": user_form,
-                           "profile_form": profile_form})
+                           "profile_form": profile_form,
+                           "section": "dashboard"})
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(
@@ -92,4 +93,5 @@ def profile_edit(request: HttpRequest) -> HttpResponse:
 
     return render(request, "account/profile_edit.html",
                   {"user_form": user_form,
-                   "profile_form": profile_form})
+                   "profile_form": profile_form,
+                   "section": "dashboard"})

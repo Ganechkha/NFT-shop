@@ -10,7 +10,7 @@ User = get_user_model()
 class Profile(models.Model):
     objects = models.Manager()
 
-    owner = models.OneToOneField(User,
+    owner = models.OneToOneField(to=User,
                                  blank=True,
                                  null=True,
                                  related_name="profile",
@@ -22,8 +22,8 @@ class Profile(models.Model):
     image = models.ImageField(upload_to="account/%Y/%m/%d",
                               null=True,
                               blank=True)
-    date_of_birth = models.DateTimeField(null=True,
-                                         blank=True)
+    date_of_birth = models.DateField(null=True,
+                                     blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -32,5 +32,4 @@ class Profile(models.Model):
 
     def get_absolute_url(self) -> str:
         return reverse("users:user_detail",
-                       args=[self.owner.id,
-                             self.owner.username])
+                       args=[self.id])
